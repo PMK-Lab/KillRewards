@@ -1,0 +1,164 @@
+messagePrefix: "&7* "
+currency: "$"
+globalMultiplier: 0.0
+spawners:
+    enable: true
+    multiplier: 0.10
+    experienceMultiplier: 0.50
+permissionMultiplier:
+    10percent: 1.10
+    20percent: 1.20
+    30percent: 1.30
+    40percent: 1.40
+    50percent: 1.50
+    60percent: 1.60
+    70percent: 1.70
+    80percent: 1.80
+    90percent: 1.90
+    double: 2.00
+    triple: 3.00
+rewards:
+    DEFAULT:
+        killerMessage: "&7You killed a &3%victim &7and got &3%reward%currency"
+        minReward: 3.0
+        maxReward: 5.0
+    PLAYER:
+        enabled: true
+        percentageTransfert: 0.05
+        maximumTransfert: 1000.0
+        killerMessage: "&7You killed &3%victim &7and stolen &3%reward%currency"
+        victimMessage: "&3%player &7killed you and stole &3%reward%currency"
+    PIG:
+        enabled: true
+        name: "pig"
+        minReward: 2.0
+        maxReward: 5.0
+    COW:
+        enabled: true
+        name: "cow"
+        minReward: 2.0
+        maxReward: 5.0
+    CHICKEN:
+        enabled: true
+        name: "chicken"
+        minReward: 2.0
+        maxReward: 5.0
+    SHEEP:
+        enabled: true
+        name: "sheep"
+        minReward: 2.0
+        maxReward: 5.0
+    WOLF:
+        enabled: true
+        name: "wolf"
+        minReward: 5.0
+        maxReward: 8.0
+    OCELOT:
+        enabled: true
+        name: "ocelot"
+        minReward: 5.0
+        maxReward: 8.0
+    SQUID:
+        enabled: true
+        name: "squid"
+        minReward: 5.0
+        maxReward: 88.0
+    HORSE:
+        enabled: true
+        name: "horse"
+        minReward: 5.0
+        maxReward: 8.0
+    MUSHROOM_COW:
+        enabled: true
+        name: "mooshroom"
+        minReward: 30.0
+        maxReward: 50.0
+    ZOMBIE:
+        enabled: true
+        name: "zombie"
+        minReward: 5.0
+        maxReward: 8.0
+    SKELETON:
+        enabled: true
+        name: "skeleton"
+        minReward: 5.0
+        maxReward: 8.0
+    SPIDER:
+        enabled: true
+        name: "spider"
+        minReward: 5.0
+        maxReward: 8.0
+    CAVE_SPIDER:
+        enabled: true
+        name: "cave spider"
+        minReward: 8.0
+        maxReward: 12.0
+    CREEPER:
+        enabled: true
+        name: "creeper"
+        minReward: 8.0
+        maxReward: 12.0
+    ENDERMAN:
+        enabled: true
+        name: "enderman"
+        minReward: 8.0
+        maxReward: 12.0
+    SLIME:
+        enabled: true
+        name: "slime"
+        minReward: 5.0
+        maxReward: 8.0
+    SILVERFISH:
+        enabled: true
+        name: "silverfish"
+        minReward: 5.0
+        maxReward: 8.0
+    PIG_ZOMBIE:
+        enabled: true
+        name: "pig-zombie"
+        minReward: 8.0
+        maxReward: 12.0
+    MAGMA_CUBE:
+        enabled: true
+        name: "magma cube"
+        minReward: 8.0
+        maxReward: 12.0
+    GHAST:
+        enabled: true
+        name: "ghast"
+        minReward: 30.0
+        maxReward: 50.0
+    GIANT:
+        enabled: true
+        name: "giant"
+        minReward: 30.0
+        maxReward: 50.0
+    BLAZE:
+        enabled: true
+        name: "blaze"
+        minReward: 8.0
+        maxReward: 12.0
+    SNOWMAN:
+        enabled: true
+        name: "snowman"
+        minReward: 5.0
+        maxReward: 8.0
+    VILLAGER:
+        enabled: true
+        name: "villager"
+        minReward: 30.0
+        maxReward: 50.0
+    RABBIT:
+        enabled: true
+        name: "rabbit"
+        minReward: 5.0
+        maxReward: 8.0
+    GUARDIAN:
+        enabled: true
+        name: "guardian"
+        minReward: 10.0
+        maxReward: 15.0
+    "Custom mob":
+        enabled: true
+        minReward: 20.0
+        maxReward: 50.0
