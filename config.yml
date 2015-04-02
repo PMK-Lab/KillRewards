@@ -138,6 +138,11 @@ rewards:
         name: "blaze"
         minReward: 8.0
         maxReward: 12.0
+    WITCH:
+        enabled: true
+        name: "sorcière"
+        minReward: 8.0
+        maxReward: 12.0
     SNOWMAN:
         enabled: true
         name: "snowman"
