@@ -163,6 +163,16 @@ rewards:
         name: "guardian"
         minReward: 10.0
         maxReward: 15.0
+    ENDERMITE:
+        enabled: true
+        name: "endermite"
+        minReward: 5.0
+        maxReward: 8.0
+    ENDER_DRAGON:
+        enabled: true
+        name: "ender dragon"
+        minReward: 1000.0
+        maxReward: 2000.0
     "Custom mob":
         enabled: true
         minReward: 20.0
