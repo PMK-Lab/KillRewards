@@ -168,6 +168,11 @@ rewards:
         name: "endermite"
         minReward: 5.0
         maxReward: 8.0
+    WITHER:
+        enabled: true
+        name: "wither"
+        minReward: 300.0
+        maxReward: 500.0
     ENDER_DRAGON:
         enabled: true
         name: "ender dragon"
