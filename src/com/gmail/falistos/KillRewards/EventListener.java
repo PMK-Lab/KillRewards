@@ -60,8 +60,11 @@ public class EventListener implements Listener {
 				reward = this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert");
 			}
 			this.plugin.economy.withdrawPlayer(victimPlayer.getName(), reward);
-    
-			this.plugin.sendMessage(victimPlayer, killer.getDisplayName(), victimName, this.plugin.getConfig().getString("rewards.PLAYER.victimMessage"), Double.valueOf(reward));
+			
+			String victimMessage = this.plugin.getConfig().getString("rewards.PLAYER.victimMessage");
+			if (victimMessage != null && !victimMessage.isEmpty()) {
+				this.plugin.sendMessage(victimPlayer, killer.getDisplayName(), victimName, victimMessage, Double.valueOf(reward));
+			}
 		}
 		else {
 			victimName = this.plugin.getConfig().getString("rewards." + section + ".name");
@@ -101,7 +104,10 @@ public class EventListener implements Listener {
 		else message = this.plugin.getConfig().getString("rewards.DEFAULT.killerMessage");
 		
 		this.plugin.economy.depositPlayer(killer.getName(), reward);
-		this.plugin.sendMessage(killer, killer.getDisplayName(), victimName, message, Double.valueOf(reward));
+		
+		if (message != null && !message.isEmpty()) {
+			this.plugin.sendMessage(killer, killer.getDisplayName(), victimName, message, Double.valueOf(reward));
+		}
 	}
 	
 }
