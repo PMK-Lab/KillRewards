@@ -3,6 +3,7 @@ package com.gmail.falistos.KillRewards;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -71,7 +72,9 @@ public class EventListener implements Listener {
 			
 			if ((victim.getCustomName() != null) && (this.plugin.getConfig().isConfigurationSection("rewards." + ChatColor.stripColor(victim.getCustomName())))) {
 				victimName = victim.getCustomName();
-				section = ChatColor.stripColor(victim.getCustomName());
+				if (EntityType.valueOf(victimName) == null) {
+					section = ChatColor.stripColor(victim.getCustomName());
+				}
 			}
 			
 			double minReward = this.plugin.getConfig().getDouble("rewards." + section + ".minReward");
