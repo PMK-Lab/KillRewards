@@ -1,6 +1,6 @@
 name: KillRewards
 main: com.gmail.falistos.KillRewards.KillRewards
-version: 1.0.6
+version: 1.0.7
 depend: [Vault]
 commands:
   killrewards:
