@@ -55,7 +55,7 @@ public class EventListener implements Listener {
     
 			double percentageTransfert = this.plugin.getConfig().getDouble("rewards.PLAYER.percentageTransfert");
 			reward = this.plugin.economy.getBalance(victimPlayer.getName()) * percentageTransfert;
-			reward = Utils.round(reward, 2);
+			reward = MathUtils.round(reward, 2);
 			
 			if (reward > this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert")) {
 				reward = this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert");
@@ -98,7 +98,7 @@ public class EventListener implements Listener {
 				}
 				event.setDroppedExp(droppedExp);
 			}
-			reward = Utils.round(reward, 2);
+			reward = MathUtils.round(reward, 2);
 		}
 		
 		if (this.plugin.getConfig().getString("rewards." + section + ".killerMessage") != null) {
