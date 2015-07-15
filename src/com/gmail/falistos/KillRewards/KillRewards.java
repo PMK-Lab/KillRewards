@@ -74,10 +74,10 @@ public class KillRewards extends JavaPlugin implements Listener {
 	protected void sendMessage(Player player, String killerName, String victimName, String message, Double reward) {
 		if (message == null) return;
 		
-		message = message.replace("%player", killerName);
-		message = message.replace("%victim", victimName);
-		message = message.replace("%reward", reward.toString());
-		message = message.replace("%currency", getConfig().getString("currency", "$"));
+		message = message.replace("%player%", killerName);
+		message = message.replace("%victim%", victimName);
+		message = message.replace("%reward%", reward.toString());
+		message = message.replace("%currency%", getConfig().getString("currency", "$"));
     
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("messagePrefix") + message));
 	}
