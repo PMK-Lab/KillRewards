@@ -54,13 +54,13 @@ public class EventListener implements Listener {
 			victimName = victimPlayer.getDisplayName();
     
 			double percentageTransfert = this.plugin.getConfig().getDouble("rewards.PLAYER.percentageTransfert");
-			reward = this.plugin.economy.getBalance(victimPlayer.getName()) * percentageTransfert;
+			reward = this.plugin.economy.getBalance(victimPlayer) * percentageTransfert;
 			reward = MathUtils.round(reward, 2);
 			
 			if (reward > this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert")) {
 				reward = this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert");
 			}
-			this.plugin.economy.withdrawPlayer(victimPlayer.getName(), reward);
+			this.plugin.economy.withdrawPlayer(victimPlayer, reward);
 			
 			String victimMessage = this.plugin.getConfig().getString("rewards.PLAYER.victimMessage");
 			if (victimMessage != null && !victimMessage.isEmpty()) {
@@ -106,7 +106,7 @@ public class EventListener implements Listener {
 		}
 		else message = this.plugin.getConfig().getString("rewards.DEFAULT.killerMessage");
 		
-		this.plugin.economy.depositPlayer(killer.getName(), reward);
+		this.plugin.economy.depositPlayer(killer, reward);
 		
 		if (message != null && !message.isEmpty()) {
 			this.plugin.sendMessage(killer, killer.getDisplayName(), victimName, message, Double.valueOf(reward));
