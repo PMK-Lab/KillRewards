@@ -1,4 +1,4 @@
-package com.gmail.falistos.KillRewards;
+package com.gmail.falistos.KillRewards.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
