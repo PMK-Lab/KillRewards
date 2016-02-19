@@ -26,7 +26,7 @@ public class EventListener implements Listener {
 		}
 	}
 	
-	@EventHandler
+	@EventHandler(ignoreCancelled=true)
 	public void onEntityDeath(EntityDeathEvent event) {
 		Player killer = event.getEntity().getKiller();
 		if (killer == null) return;
@@ -53,16 +53,16 @@ public class EventListener implements Listener {
     
 			victimName = victimPlayer.getDisplayName();
     
-			double percentageTransfert = this.plugin.getConfig().getDouble("rewards.PLAYER.percentageTransfert");
+			double percentageTransfert = this.plugin.getConfig().getDouble("rewards.player.percentageTransfert");
 			reward = this.plugin.economy.getBalance(victimPlayer) * percentageTransfert;
 			reward = MathUtils.round(reward, 2);
 			
-			if (reward > this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert")) {
-				reward = this.plugin.getConfig().getDouble("rewards.PLAYER.maximumTransfert");
+			if (reward > this.plugin.getConfig().getDouble("rewards.player.maximumTransfert")) {
+				reward = this.plugin.getConfig().getDouble("rewards.player.maximumTransfert");
 			}
 			this.plugin.economy.withdrawPlayer(victimPlayer, reward);
 			
-			String victimMessage = this.plugin.getConfig().getString("rewards.PLAYER.victimMessage");
+			String victimMessage = this.plugin.getConfig().getString("rewards.player.victimMessage");
 			if (victimMessage != null && !victimMessage.isEmpty()) {
 				this.plugin.sendMessage(victimPlayer, killer.getDisplayName(), victimName, victimMessage, Double.valueOf(reward));
 			}
@@ -72,9 +72,7 @@ public class EventListener implements Listener {
 			
 			if ((victim.getCustomName() != null) && (this.plugin.getConfig().isConfigurationSection("rewards." + ChatColor.stripColor(victim.getCustomName())))) {
 				victimName = victim.getCustomName();
-				if (EntityType.valueOf(victimName) == null) {
-					section = ChatColor.stripColor(victim.getCustomName());
-				}
+				section = ChatColor.stripColor(victim.getCustomName());
 			}
 			
 			double minReward = this.plugin.getConfig().getDouble("rewards." + section + ".minReward");
@@ -83,16 +81,16 @@ public class EventListener implements Listener {
 			double random = new Random().nextDouble();
 			reward = minReward + random * (maxReward - minReward);
 			
-			if (this.plugin.getConfig().getDouble("globalMultiplier") != 0.0D) {
-				reward *= this.plugin.getConfig().getDouble("globalMultiplier");
+			if (this.plugin.getConfig().getDouble("multipliers.global") != 0.0D) {
+				reward *= this.plugin.getConfig().getDouble("multipliers.global");
 			}
 			
 			reward *= this.plugin.getPermissionMultiplier(killer);
 			
-			if ((this.plugin.isFromSpawner(victim.getUniqueId())) && (this.plugin.getConfig().getBoolean("spawners.enable"))) {
-				reward *= this.plugin.getConfig().getDouble("spawners.multiplier");
+			if ((this.plugin.isFromSpawner(victim.getUniqueId())) && (this.plugin.getConfig().getBoolean("multipliers.spawner.enable"))) {
+				reward *= this.plugin.getConfig().getDouble("multipliers.spawner.multiplier");
       
-				int droppedExp = (int)(event.getDroppedExp() * this.plugin.getConfig().getDouble("spawners.experienceMultiplier"));
+				int droppedExp = (int)(event.getDroppedExp() * this.plugin.getConfig().getDouble("multipliers.spawner.experience-multiplier"));
 				if (droppedExp <= 0) {
 					droppedExp = 1;
 				}
@@ -104,7 +102,7 @@ public class EventListener implements Listener {
 		if (this.plugin.getConfig().getString("rewards." + section + ".killerMessage") != null) {
 			message = this.plugin.getConfig().getString("rewards." + section + ".killerMessage");
 		}
-		else message = this.plugin.getConfig().getString("rewards.DEFAULT.killerMessage");
+		else message = this.plugin.getConfig().getString("rewards.default.killerMessage");
 		
 		this.plugin.economy.depositPlayer(killer, reward);
 		

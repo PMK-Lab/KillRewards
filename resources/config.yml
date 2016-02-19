@@ -1,28 +1,33 @@
-messagePrefix: "&7* "
-currency: "$"
-globalMultiplier: 0.0
-spawners:
-    enable: true
-    multiplier: 0.10
-    experienceMultiplier: 0.50
-permissionMultiplier:
-    10percent: 1.10
-    20percent: 1.20
-    30percent: 1.30
-    40percent: 1.40
-    50percent: 1.50
-    60percent: 1.60
-    70percent: 1.70
-    80percent: 1.80
-    90percent: 1.90
-    double: 2.00
-    triple: 3.00
+message-prefix: "&7* "
+currency: "P"
+multipliers:
+    global: 0.0
+    # Spawner multiplier
+    # useful for nerfing spawner farming
+    spawner:
+        enable: true
+        multiplier: 0.10
+        experience-multiplier: 0.10
+    # permission multiplier
+    # killrewards.multiplier.<name>
+    permission:
+        10percent: 1.10
+        20percent: 1.20
+        30percent: 1.30
+        40percent: 1.40
+        50percent: 1.50
+        60percent: 1.60
+        70percent: 1.70
+        80percent: 1.80
+        90percent: 1.90
+        double: 2.00
+        triple: 3.00
 rewards:
-    DEFAULT:
-        killerMessage: "&7You killed a &3%victim &7and got &3%reward%currency"
-        minReward: 3.0
-        maxReward: 5.0
-    PLAYER:
+    default:
+        killer-message: "&7You killed a &3%victim &7and got &3%reward%currency"
+        reward-min: 3.0
+        reward-max: 5.0
+    player:
         enabled: true
         percentageTransfert: 0.05
         maximumTransfert: 1000.0

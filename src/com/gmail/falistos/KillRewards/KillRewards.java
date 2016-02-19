@@ -1,5 +1,6 @@
 package com.gmail.falistos.KillRewards;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -33,10 +34,14 @@ public class KillRewards extends JavaPlugin implements Listener {
 			return;
 		}
 		
-		this.getConfig().options().copyDefaults(true);
 		this.saveDefaultConfig();
-    
 		this.getServer().getPluginManager().registerEvents(new EventListener(this), this);
+	}
+	
+	public void saveDefaultConfig() {
+	    if (!(new File(getDataFolder(), "config.yml")).exists()) {           
+	         this.saveResource("config.yml", false);
+	    }
 	}
   
 	private boolean setupEconomy() {
@@ -79,7 +84,7 @@ public class KillRewards extends JavaPlugin implements Listener {
 		message = message.replace("%reward%", reward.toString());
 		message = message.replace("%currency%", getConfig().getString("currency", "$"));
     
-		player.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("messagePrefix") + message));
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("message-prefix") + message));
 	}
 
 	protected boolean isFromSpawner(UUID uuid) {
@@ -90,10 +95,10 @@ public class KillRewards extends JavaPlugin implements Listener {
 	public double getPermissionMultiplier(Player player) {
 		double multiplier = 1.0D;
     
-		ConfigurationSection permissionsSection = getConfig().getConfigurationSection("permissionMultiplier");
+		ConfigurationSection permissionsSection = getConfig().getConfigurationSection("multipliers.permission");
 		for (String key : permissionsSection.getKeys(false)) {
 			if (player.hasPermission("killrewards.multiplier." + key)) {
-				Double permissionMultiplier = Double.valueOf(getConfig().getDouble("permissionMultiplier." + key));
+				Double permissionMultiplier = Double.valueOf(getConfig().getDouble("multipliers.permission." + key));
 				if ((permissionMultiplier.doubleValue() != 0.0D) && (permissionMultiplier.doubleValue() > multiplier)) {
 					multiplier = permissionMultiplier.doubleValue();
 				}
