@@ -20,6 +20,8 @@ public class KillRewards extends JavaPlugin implements Listener {
    public Economy economy;
    public List<UUID> spawnerEntities = new ArrayList<UUID>();
 
+   public static KillRewards plugin;
+   
 
    public void onEnable() {
       if(this.getServer().getPluginManager().getPlugin("Vault") == null) {
@@ -31,6 +33,9 @@ public class KillRewards extends JavaPlugin implements Listener {
       } else {
          this.getConfig().options().copyDefaults(true);
          this.saveDefaultConfig();
+         
+         plugin = this;
+         
          this.getServer().getPluginManager().registerEvents(new EventListener(this), this);
       }
    }

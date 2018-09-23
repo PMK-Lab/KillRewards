@@ -138,15 +138,22 @@ public class EventListener implements Listener {
                   } else {
                      message = this.plugin.getConfig().getString("rewards.DEFAULT.killerMessage");
                   }
-
                   
-                  
-                  this.plugin.economy.depositPlayer(killer.getName(), reward);
-                  
-                  if(message != null && !message.isEmpty()) {
-                     this.plugin.sendMessage(killer, killer.getDisplayName(), victimName, message, Double.valueOf(reward));
+                  for (Player player : KillRewards.plugin.getServer().getOnlinePlayers()) {
+                	  
+                	  if(player.getName().equals(killer.getName())) {
+                		  
+                		  this.plugin.economy.depositPlayer(killer.getName(), reward);
+                          
+                          if(message != null && !message.isEmpty()) {
+                             this.plugin.sendMessage(killer, killer.getDisplayName(), victimName, message, Double.valueOf(reward));
+                          }
+                          
+                          return;
+                		  
+                	  }					
                   }
-
+                 
                }
             }
          }
