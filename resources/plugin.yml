@@ -1,0 +1,14 @@
+name: KillRewards
+main: com.gmail.falistos.KillRewards.KillRewards
+version: ${project.version}
+depend: [Vault]
+commands:
+  killrewards:
+    description: Manage KillRewards.
+permissions:
+  killrewards.earn:
+    description: Allow to earn money.
+    default: true
+  killrewards.reload:
+    description: Allow to reload plugin.
+    default: op
