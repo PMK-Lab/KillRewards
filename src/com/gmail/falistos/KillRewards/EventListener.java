@@ -31,6 +31,7 @@ public class EventListener implements Listener {
 		Player killer = event.getEntity().getKiller();
 		if (killer == null) return;
 		if (!(killer instanceof Player)) return;
+		if (killer.getUniqueId() == null) return;
 		
 		LivingEntity victim = event.getEntity();
 		String section = victim.getType().toString();
